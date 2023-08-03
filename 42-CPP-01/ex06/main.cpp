@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/27 11:04:40 by azari             #+#    #+#             */
-/*   Updated: 2023/07/27 11:17:49 by azari            ###   ########.fr       */
+/*   Created: 2023/08/03 08:45:42 by azari             #+#    #+#             */
+/*   Updated: 2023/08/03 13:57:57 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_HPP
-# define WEAPON_HPP
+#include "Harl.hpp"
 
-#include <iostream>
+int main(int ac, char **av)
+{
+	Harl		H;
 
-class Weapon{
-
-	std::string type;
-public:
-
-	const std::string	&getType(void) const;
-	void  setType(std::string type);
-};
-
-#endif
+	if (ac != 2)
+	{
+		std::cout 	<< "\n\033[3;31merror : unvalid input"
+					<< "\nusage: ./harlFilter <DEBUG, INFO, WARNING, ERROR, \"text\">\n" << std::endl;
+		return (EXIT_FAILURE);
+	}
+	H.complain(av[1]);
+	return (EXIT_SUCCESS);
+}

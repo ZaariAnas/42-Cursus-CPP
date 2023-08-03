@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/27 11:03:09 by azari             #+#    #+#             */
-/*   Updated: 2023/07/27 11:25:23 by azari            ###   ########.fr       */
+/*   Created: 2023/08/03 08:45:42 by azari             #+#    #+#             */
+/*   Updated: 2023/08/03 11:57:31 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANA_HPP
-# define HUMANA_HPP
+#include "Harl.hpp"
 
-#include <iostream>
-#include "Weapon.hpp"
+int main()
+{
+	Harl		H;
+	std::string	buffer;
 
-class HumanA{
-
-	Weapon W;
-	std::string name;
-public:
-
-	void	attack(void) const;
-};
-
-#endif
+	std::cout << "\n\033[1;33mpick a level : \033[0m";
+	while (std::getline(std::cin, buffer, '\n'))
+	{
+		H.complain(buffer);
+		std::cout << "\033[1;33mpick a level : \033[0m";
+	}
+}

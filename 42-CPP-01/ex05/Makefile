@@ -5,19 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: azari <azari@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/07/27 10:57:12 by azari             #+#    #+#              #
-#    Updated: 2023/07/27 10:58:45 by azari            ###   ########.fr        #
+#    Created: 2023/08/03 06:57:18 by azari             #+#    #+#              #
+#    Updated: 2023/08/03 06:58:10 by azari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 YELLOW 		= 	\033[1;33m
 CC			= 	c++
 CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
-NAME 		= 	violence
+NAME 		= 	Harl
 CFILES		= 	main.cpp	\
-				Weapon.cpp	\
-				HumanA.cpp	\
-				HumanB.cpp	\
+				Harl.cpp	\
 
 OFILES		= 	$(CFILES:.cpp=.o)
 
@@ -25,13 +23,12 @@ all : $(NAME)
 
 $(NAME) : $(OFILES)
 	@$(CC) $(CFLAGS) $(OFILES) -o $(NAME)
-	@echo "$(YELLOW) -- Unnecessary violence --"
+	@echo "$(YELLOW) -- Harl 2.0 --"
 	
-%.o:%.cpp Zombie.hpp
+%.o:%.cpp
 	@echo "$(YELLOW) ⏳ Setup ongoing"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-	
 clean	:
 	@rm -rf $(OFILES)
 	@echo  "$(YELLOW) ❌ OBJS deleted."

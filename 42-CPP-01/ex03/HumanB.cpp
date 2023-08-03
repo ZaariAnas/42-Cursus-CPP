@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.hpp                                         :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/27 11:01:45 by azari             #+#    #+#             */
-/*   Updated: 2023/07/27 11:25:44 by azari            ###   ########.fr       */
+/*   Created: 2023/08/01 13:57:52 by azari             #+#    #+#             */
+/*   Updated: 2023/08/01 14:07:15 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANB_HPP
-# define HUMANB_HPP
+#include "HumanB.hpp"
 
-#include <iostream>
-#include "Weapon.hpp"
+HumanB::HumanB(std::string name) : _name(name)
+{
+	std::cout << "HumanB Constructor called" << std::endl;
+}
 
-class HumanB{
+HumanB::~HumanB()
+{
+	std::cout << "HumanB Destructor called" << std::endl;
+}
 
-	Weapon W;
-	std::string name;
-public:
+void	HumanB::attack() const
+{
+	std::cout 	<< _name
+				<< " attacks with their "
+				<< _w->getType()
+				<< std::endl;
+}
 
-	void	attack(void) const;
-};
-
-#endif
+void	HumanB::setWeapon(Weapon &w)
+{
+	this->_w = &w;
+}

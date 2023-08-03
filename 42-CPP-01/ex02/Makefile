@@ -6,7 +6,7 @@
 #    By: azari <azari@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 10:19:06 by azari             #+#    #+#              #
-#    Updated: 2023/07/27 10:38:58 by azari            ###   ########.fr        #
+#    Updated: 2023/08/01 13:25:56 by azari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ $(NAME) : $(OFILES)
 	@$(CC) $(CFLAGS) $(OFILES) -o $(NAME)
 	@echo "$(YELLOW) -- HI THIS IS BRAIN --"
 	
-%.o:%.cpp Zombie.hpp
+%.o:%.cpp
 	@echo "$(YELLOW) ⏳ Setup ongoing"
 	@$(CC) $(CFLAGS) -c $< -o $@
 

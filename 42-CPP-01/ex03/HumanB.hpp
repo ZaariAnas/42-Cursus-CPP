@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/27 11:25:55 by azari             #+#    #+#             */
-/*   Updated: 2023/07/27 11:30:03 by azari            ###   ########.fr       */
+/*   Created: 2023/08/01 13:57:40 by azari             #+#    #+#             */
+/*   Updated: 2023/08/01 13:57:44 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
+#ifndef HUMANB_HPP
+# define HUMANB_HPP
 
-void	HumanA::attack(void) const
-{
-	std::cout << this->name << " attacks with their" 
-			  << this->W.getType() << std::endl;
-}
+#include "Weapon.hpp"
+
+class HumanB{
+
+	std::string _name;
+	Weapon *_w;
+public:
+
+	HumanB(std::string name);
+	~HumanB();
+	void	attack(void) const;
+	void	setWeapon(Weapon &);
+};
+
+#endif
