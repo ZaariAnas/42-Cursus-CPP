@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 08:45:42 by azari             #+#    #+#             */
-/*   Updated: 2023/08/03 11:57:31 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/05 15:47:51 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main()
 	std::string	buffer;
 
 	std::cout << "\n\033[1;33mpick a level : \033[0m";
-	while (std::getline(std::cin, buffer, '\n'))
+	while (std::getline(std::cin, buffer, '\n') && buffer.compare("EXIT"))
 	{
 		H.complain(buffer);
 		std::cout << "\033[1;33mpick a level : \033[0m";

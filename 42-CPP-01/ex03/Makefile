@@ -6,7 +6,7 @@
 #    By: azari <azari@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/01 13:25:44 by azari             #+#    #+#              #
-#    Updated: 2023/08/01 14:11:42 by azari            ###   ########.fr        #
+#    Updated: 2023/08/05 06:45:38 by azari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ CFILES		= 	main.cpp	\
 				Weapon.cpp	\
 
 OFILES		= 	$(CFILES:.cpp=.o)
+HEADERS		= 	HumanA.hpp HumanB.hpp Weapon.hpp
 
 all : $(NAME)
 
@@ -27,7 +28,7 @@ $(NAME) : $(OFILES)
 	@$(CC) $(CFLAGS) $(OFILES) -o $(NAME)
 	@echo "$(YELLOW) -- Unnecessary violence --"
 	
-%.o:%.cpp
+%.o:%.cpp $(HEADERS)
 	@echo "$(YELLOW) ⏳ Setup ongoing"
 	@$(CC) $(CFLAGS) -c $< -o $@
 

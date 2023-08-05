@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 07:11:42 by azari             #+#    #+#             */
-/*   Updated: 2023/08/03 13:41:57 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/05 06:37:18 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ to the manager now.\n" << std::endl;
 
 void	Harl::complain(std::string level)
 {
+	t_comms comms[] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	std::string levels[] = { "DEBUG", "INFO", "WARNING", "ERROR"};
 	int i = 0;
 
@@ -49,25 +50,13 @@ void	Harl::complain(std::string level)
 	switch(x)
 	{
 		case 0:
-				this->debug();
-				this->info();
-				this->warning();
-				this->error();
-				break;
-
+				(this->*comms[i++])();
 		case 1:
-				this->info();
-				this->warning();
-				this->error();
-				break;
-
+				(this->*comms[i++])();
 		case 2:
-				this->warning();
-				this->error();
-				break;
-
+				(this->*comms[i++])();
 		case 3:
-				this->error();
+				(this->*comms[i])();
 				break;
 		default:
 				std::cout << "\n\033[1;37m[ Probably complaining about insignificant problems ]" << std::endl;

@@ -6,7 +6,7 @@
 #    By: azari <azari@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/03 06:57:18 by azari             #+#    #+#              #
-#    Updated: 2023/08/03 06:58:10 by azari            ###   ########.fr        #
+#    Updated: 2023/08/05 06:44:26 by azari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ $(NAME) : $(OFILES)
 	@$(CC) $(CFLAGS) $(OFILES) -o $(NAME)
 	@echo "$(YELLOW) -- Harl 2.0 --"
 	
-%.o:%.cpp
+%.o:%.cpp Harl.hpp
 	@echo "$(YELLOW) ⏳ Setup ongoing"
 	@$(CC) $(CFLAGS) -c $< -o $@
 

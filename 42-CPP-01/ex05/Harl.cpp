@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 07:11:42 by azari             #+#    #+#             */
-/*   Updated: 2023/08/03 12:36:03 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/05 15:47:08 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,5 @@ void	Harl::complain(std::string level)
 		j++;
 	if (!(j % 3) && i == 4)
 		std::cout 	<< "\n\033[3;31merror : unvalid input"
-					<< "\nusage: pick a level : <(DEBUG, INFO, WARNING, ERROR)>\n" << std::endl;
+					<< "\nusage: pick a level : < DEBUG, INFO, WARNING, ERROR, EXIT >\n" << std::endl;
 }

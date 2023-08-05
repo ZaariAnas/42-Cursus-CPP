@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/03 08:45:42 by azari             #+#    #+#             */
-/*   Updated: 2023/08/05 15:45:20 by azari            ###   ########.fr       */
+/*   Created: 2023/08/05 06:58:19 by azari             #+#    #+#             */
+/*   Updated: 2023/08/05 13:03:24 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
-int main(int ac, char **av)
-{
-	Harl		H;
+#include <iostream>
 
-	if (ac != 2 || !av[1][0])
-	{
-		std::cout 	<< "\n\033[3;31merror : unvalid input"
-					<< "\nusage: ./harlFilter <DEBUG, INFO, WARNING, ERROR, \"text\">\n" << std::endl;
-		return (EXIT_FAILURE);
-	}
-	H.complain(av[1]);
-	return (EXIT_SUCCESS);
-}
+class Fixed{
+	
+	int	value;
+	static const int FRAC_BIT_NUM = 8;
+public:
+
+	Fixed();
+	Fixed(const Fixed &F);
+	~Fixed();
+
+	Fixed	&operator=(const Fixed &F);
+	int	getRawBits( void ) const;
+	void setRawBits( int const raw );
+	
+};
+
+#endif
