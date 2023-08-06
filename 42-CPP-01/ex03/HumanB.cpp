@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: azari <azari@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 13:57:52 by azari             #+#    #+#             */
-/*   Updated: 2023/08/01 14:07:15 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/06 17:01:40 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ HumanB::~HumanB()
 
 void	HumanB::attack() const
 {
+	if (!_w)
+	{
+		std::cout << "HumanB has no weapon" << std::endl;
+		return;
+	}
 	std::cout 	<< _name
 				<< " attacks with their "
 				<< _w->getType()
