@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 11:22:35 by azari             #+#    #+#             */
-/*   Updated: 2023/08/03 07:01:50 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/07 06:38:49 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,12 @@ int	Sed::replace(std::string s1, std::string s2)
 	i = -1;
 	while (std::getline(infile, buffer) && infile.is_open())
 	{
-		while ((pos = buffer.find(s1)) != std::string::npos)
+		pos = pos = buffer.find(s1);
+		while (pos != std::string::npos)
 		{
 			buffer.erase(pos, s1.length());
 			buffer.insert(pos, s2);
+			pos = buffer.find(s1.c_str(), pos + s2.length(), s1.length());
 		}
 		outfile << buffer << std::endl;
 		i++;

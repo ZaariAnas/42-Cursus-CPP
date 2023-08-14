@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 13:44:56 by azari             #+#    #+#             */
-/*   Updated: 2023/08/05 13:54:52 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/09 14:22:31 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main( void )
 {
 	Fixed a;
-	Fixed const b( 10 );
+	Fixed const b( 10.00f );
 	Fixed const c( 42.42f );
 	Fixed const d( b );
 	a = Fixed( 1234.4321f );

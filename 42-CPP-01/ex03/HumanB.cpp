@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 13:57:52 by azari             #+#    #+#             */
-/*   Updated: 2023/08/06 17:01:40 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/07 06:30:14 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name) : _name(name)
+HumanB::HumanB(std::string name) : _name(name) , _w(NULL)
 {
 	std::cout << "HumanB Constructor called" << std::endl;
 }
@@ -27,7 +27,7 @@ void	HumanB::attack() const
 	if (!_w)
 	{
 		std::cout << "HumanB has no weapon" << std::endl;
-		return;
+		return ;
 	}
 	std::cout 	<< _name
 				<< " attacks with their "

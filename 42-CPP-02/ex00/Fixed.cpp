@@ -6,11 +6,12 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:04:22 by azari             #+#    #+#             */
-/*   Updated: 2023/08/05 13:05:15 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/09 12:00:46 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+const int Fixed::_FRAC_BIT_NUM = 8;
 
 Fixed::Fixed() : value(0)
 {
