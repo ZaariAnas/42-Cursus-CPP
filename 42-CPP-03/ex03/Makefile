@@ -6,7 +6,7 @@
 #    By: azari <azari@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 14:13:25 by azari             #+#    #+#              #
-#    Updated: 2023/08/16 16:15:44 by azari            ###   ########.fr        #
+#    Updated: 2023/08/17 14:08:45 by azari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,12 @@ YELLOW 		= 	\033[1;33m
 CC			= 	c++
 CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
 NAME 		= 	a.out
+HEADERS		= 	DiamondTrap.hpp FragTrap.hpp ScavTrap.hpp ClapTrap.hpp
 CFILES		= 	main.cpp		\
 				ClapTrap.cpp	\
 				ScavTrap.cpp	\
 				FragTrap.cpp	\
+				DiamondTrap.cpp	\
 
 OFILES		= 	$(CFILES:.cpp=.o)
 
@@ -27,7 +29,7 @@ $(NAME) : $(OFILES)
 	@$(CC) $(CFLAGS) $(OFILES) -o $(NAME)
 	@echo "$(YELLOW) -- ClapTrap --"
 	
-%.o:%.cpp ClapTrap.hpp
+%.o:%.cpp $(HEADERS)
 	@echo "$(YELLOW) ⏳ Setup ongoing"
 	@$(CC) $(CFLAGS) -c $< -o $@
 

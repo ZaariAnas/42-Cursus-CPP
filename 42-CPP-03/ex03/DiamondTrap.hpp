@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:18:15 by azari             #+#    #+#             */
-/*   Updated: 2023/08/17 10:24:34 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/17 14:11:17 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "ScavTrap.hpp"
 #include <iostream>
 
-class DiamondTrap: public FragTrap, public ScavTrap{
+class DiamondTrap: public ScavTrap, public FragTrap{
 
 	std::string Name;
 public:
@@ -29,7 +29,7 @@ public:
 	DiamondTrap(DiamondTrap &other);
 	DiamondTrap	&operator=(DiamondTrap &other);
 	void	attack(const std::string& name);
-	void	highFivesGuys(void);
+	void	whoAmI(void);
 };
 
 #endif

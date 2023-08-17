@@ -6,17 +6,17 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 14:13:23 by azari             #+#    #+#             */
-/*   Updated: 2023/08/16 16:22:32 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/17 15:07:08 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "FragTrap.hpp"
-
+#include "DiamondTrap.hpp"
 
 int main()
 {
-	FragTrap poo("poo");
-	poo.attack("pp");
-	poo.highFivesGuys();
+	DiamondTrap	PikaBoo("Pikaboo");
+	// DiamondTrap PB(PikaBoo);
+	PikaBoo.attack("MONSTER");
+	PikaBoo.whoAmI();
+	PikaBoo.guardGate();
 }

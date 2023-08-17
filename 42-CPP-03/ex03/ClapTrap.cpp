@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 14:13:31 by azari             #+#    #+#             */
-/*   Updated: 2023/08/16 15:39:56 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/17 15:09:43 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 ClapTrap::ClapTrap()
 {
-	std::cout << "ClapTrap \033[1;33m" << Name << " \033[0mConstructor Called" << std::endl;
+	std::cout << "ClapTrap Default Constructor Called" << std::endl;
 	this->HitPoints = 10;
 	this->EnergyPoints = 10;
 	this->AttackDamage = 0;
 }
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap \033[1;33m" << Name << " \033[0mDestructor Called" << std::endl;
+	std::cout << "ClapTrap \033[1;33m" << Name << "\033[0m Destructor Called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string Name)
 {
-	std::cout << "ClapTrap \033[1;33m" << Name << " \033[0mConstructor Called" << std::endl;
+	std::cout << "ClapTrap \033[1;33m" << Name << "\033[0m Constructor Called" << std::endl;
 	this->Name = Name;
 	this->HitPoints = 10;
 	this->EnergyPoints = 10;
@@ -35,7 +35,7 @@ ClapTrap::ClapTrap(std::string Name)
 
 ClapTrap::ClapTrap(ClapTrap &C)
 {
-	std::cout << "ClapTrap \033[1;33m" << Name << " \033[0mCopy Constructor Called" << std::endl;
+	std::cout << "ClapTrap \033[1;33m" << Name << "\033[0mCopy Constructor Called" << std::endl;
 	*this = C;
 }
 
@@ -65,10 +65,10 @@ void ClapTrap::attack(const std::string& target)
 	}
 	if (this->EnergyPoints <= 0)
 	{
-		std::cout << "ClapTrap \033[1;33m" << Name << " \033[0mis out of Energy Points" << std::endl;
+		std::cout << "ClapTrap \033[1;33m" << Name << "\033[0mis out of Energy Points" << std::endl;
 		return;
 	}
-	std::cout << "ClapTrap \033[1;33m" << Name << " \033[0mattacks \033[1;35m" << target << "\033[0m";
+	std::cout << "ClapTrap \033[1;33m " << Name << " \033[0mattacks \033[1;35m" << target << "\033[0m";
 	std::cout << ", causing " << AttackDamage << " points of damage !" << std::endl;
 	EnergyPoints -= 1;
 }
