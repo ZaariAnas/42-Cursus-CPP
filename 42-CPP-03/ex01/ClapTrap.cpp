@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 14:13:31 by azari             #+#    #+#             */
-/*   Updated: 2023/08/16 15:39:56 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/18 06:45:26 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ClapTrap::ClapTrap()
 {
-	std::cout << "ClapTrap \033[1;33m" << Name << " \033[0mConstructor Called" << std::endl;
+	std::cout << "ClapTrap Default Constructor Called" << std::endl;
 	this->HitPoints = 10;
 	this->EnergyPoints = 10;
 	this->AttackDamage = 0;
@@ -49,9 +49,9 @@ ClapTrap &ClapTrap::operator=(ClapTrap &C)
 	if (&C != this)
 	{
 		this->Name = C.getName();
-		this->HitPoints = 10;
-		this->EnergyPoints = 10;
-		this->AttackDamage = 0;
+		this->HitPoints = C.HitPoints;
+		this->EnergyPoints = C.EnergyPoints;
+		this->AttackDamage = C.AttackDamage;
 	}
 	return (*this);
 }

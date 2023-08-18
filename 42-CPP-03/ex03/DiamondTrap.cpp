@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:28:17 by azari             #+#    #+#             */
-/*   Updated: 2023/08/17 17:42:22 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/18 06:44:32 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,5 @@ void DiamondTrap::attack(const std::string& target)
 void	DiamondTrap::whoAmI()
 {
 	std::cout << "\033[1;34mBOO\033[0m From DiamondTrap \033[1;33m" << Name;
-	std::cout << "\033[0m ClapTrap \033[1;33m" << ClapTrap::Name << std::endl;
+	std::cout << "\033[0m ClapTrap \033[1;33m" << ClapTrap::Name << "\033[0m" << std::endl;
 }

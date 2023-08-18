@@ -6,7 +6,7 @@
 #    By: azari <azari@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 14:13:25 by azari             #+#    #+#              #
-#    Updated: 2023/08/17 14:08:45 by azari            ###   ########.fr        #
+#    Updated: 2023/08/18 06:46:15 by azari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ all : $(NAME)
 
 $(NAME) : $(OFILES)
 	@$(CC) $(CFLAGS) $(OFILES) -o $(NAME)
-	@echo "$(YELLOW) -- ClapTrap --"
+	@echo "$(YELLOW) -- DiamondTrap --"
 	
 %.o:%.cpp $(HEADERS)
 	@echo "$(YELLOW) ⏳ Setup ongoing"

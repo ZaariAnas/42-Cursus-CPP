@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 14:13:31 by azari             #+#    #+#             */
-/*   Updated: 2023/08/16 13:27:44 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/18 06:28:41 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ ClapTrap &ClapTrap::operator=(ClapTrap &C)
 	if (&C != this)
 	{
 		this->Name = C.getName();
-		this->HitPoints = 10;
-		this->EnergyPoints = 10;
-		this->AttackDamage = 0;
+		this->HitPoints = C.HitPoints;
+		this->EnergyPoints = C.EnergyPoints;
+		this->AttackDamage = C.AttackDamage;
 	}
 	return (*this);
 }
@@ -66,10 +66,10 @@ void ClapTrap::attack(const std::string& target)
 	}
 	if (this->EnergyPoints <= 0)
 	{
-		std::cout << "ClapTrap" << Name << "is out of Energy Points" << std::endl;
+		std::cout << "ClapTrap \033[1;33m" << Name << "\033[0m is out of Energy Points" << std::endl;
 		return;
 	}
-	std::cout << "ClapTrap " << Name << " attacks " << target;
+	std::cout << "ClapTrap \033[1;33m" << Name << " \033[0mattacks \033[1;35m" << target << "\033[0m";
 	std::cout << ", causing " << AttackDamage << " points of damage !" << std::endl;
 	EnergyPoints -= 1;
 }

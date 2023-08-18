@@ -6,17 +6,18 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 14:13:23 by azari             #+#    #+#             */
-/*   Updated: 2023/08/16 16:22:32 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/18 06:39:48 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
 #include "FragTrap.hpp"
-
 
 int main()
 {
-	FragTrap poo("poo");
-	poo.attack("pp");
-	poo.highFivesGuys();
+	FragTrap Fragy("FRAG");
+	FragTrap copyFragy(Fragy);
+	Fragy.attack("MONSTER");
+	copyFragy.attack("MONSTER");
+	Fragy.highFivesGuys();
+	copyFragy.highFivesGuys();
 }
