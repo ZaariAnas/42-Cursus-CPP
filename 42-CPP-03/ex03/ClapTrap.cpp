@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 14:13:31 by azari             #+#    #+#             */
-/*   Updated: 2023/08/17 15:09:43 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/17 18:16:59 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void ClapTrap::attack(const std::string& target)
 		std::cout << "ClapTrap \033[1;33m" << Name << "\033[0mis out of Energy Points" << std::endl;
 		return;
 	}
-	std::cout << "ClapTrap \033[1;33m " << Name << " \033[0mattacks \033[1;35m" << target << "\033[0m";
+	std::cout << "ClapTrap \033[1;33m" << Name << " \033[0mattacks \033[1;35m" << target << "\033[0m";
 	std::cout << ", causing " << AttackDamage << " points of damage !" << std::endl;
 	EnergyPoints -= 1;
 }

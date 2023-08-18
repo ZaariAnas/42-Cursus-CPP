@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 16:13:44 by azari             #+#    #+#             */
-/*   Updated: 2023/08/16 18:22:19 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/17 18:49:03 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,9 @@ void FragTrap::attack(const std::string& target)
 void	FragTrap::highFivesGuys(void)
 {
   	std::cout << "FragTrap \033[1;33m " << Name << "\033[0m High Fives Guys" << std::endl;
+}
+
+FragTrap	&FragTrap::operator=(FragTrap &other)
+{
+	ClapTrap::operator=(other);
 }

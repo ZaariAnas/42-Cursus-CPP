@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:28:17 by azari             #+#    #+#             */
-/*   Updated: 2023/08/17 17:25:46 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/17 17:42:22 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 DiamondTrap::DiamondTrap() : ScavTrap(), FragTrap()
 {
-  	std::cout << "DiamondTrap \033[1;33m " << Name << "\033[0m Default Constructor Called" << std::endl;
+  	std::cout << "DiamondTrap Default Constructor Called" << std::endl;
 }
 
 DiamondTrap::~DiamondTrap()
 {
-  	std::cout << "DiamondTrap \033[1;33m " << Name << "\033[0m Destructor Called" << std::endl;
+  	std::cout << "DiamondTrap \033[1;33m" << Name << "\033[0m Destructor Called" << std::endl;
 }
 
 DiamondTrap::DiamondTrap(std::string Name) : ScavTrap(), FragTrap()
 {
-  	std::cout << "DiamondTrap \033[1;33m " << Name << "\033[0m Constructor Called" << std::endl;
+  	std::cout << "DiamondTrap \033[1;33m" << Name << "\033[0m Constructor Called" << std::endl;
 	this->Name = Name;
 	ClapTrap::Name = Name.append("_clap_name");
 	this->HitPoints = 100;
 	this->EnergyPoints = 50;
-	this->AttackDamage = 30
+	this->AttackDamage = 30;
 }
 
 DiamondTrap::DiamondTrap(DiamondTrap &other)

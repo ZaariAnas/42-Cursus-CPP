@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 16:14:36 by azari             #+#    #+#             */
-/*   Updated: 2023/08/16 16:21:32 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/17 18:20:29 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ public:
 	FragTrap(std::string name);
 	void	attack(const std::string& name);
 	void	highFivesGuys(void);
+	FragTrap &operator=(FragTrap &C);
 };
 
 #endif
