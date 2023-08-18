@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 12:37:56 by azari             #+#    #+#             */
-/*   Updated: 2023/08/17 09:39:47 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/18 06:06:34 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ public:
 	ScavTrap();
 	~ScavTrap();
 	ScavTrap(std::string name);
+	ScavTrap(ScavTrap &other);
 	void	attack(const std::string& name);
 	void	guardGate(void);
+	ScavTrap	&operator=(ScavTrap &other);
 };
 
 #endif

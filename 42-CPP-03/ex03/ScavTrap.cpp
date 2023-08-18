@@ -15,11 +15,11 @@
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-	std::cout << name << std::endl;
+
 	this->HitPoints = 100;
 	this->EnergyPoints = 50;
 	this->AttackDamage = 20;
-  	// std::cout << "ScavTrap \033[1;33m" << name << "\033[0m Constructor Called" << std::endl;
+  	std::cout << "ScavTrap \033[1;33m" << name << "\033[0m Constructor Called" << std::endl;
 }
 
 ScavTrap::~ScavTrap()
@@ -33,6 +33,12 @@ ScavTrap::ScavTrap() : ClapTrap()
 	this->EnergyPoints = 50;
 	this->AttackDamage = 20;
   	std::cout << "ScavTrap Default Constructor Called" << std::endl;
+}
+
+ScavTrap::ScavTrap(ScavTrap &other)
+{
+  	std::cout << "ScavTrap Copy Constructor Called" << std::endl;
+	*this = other;
 }
 
 void ScavTrap::attack(const std::string& target)
@@ -54,4 +60,16 @@ void ScavTrap::attack(const std::string& target)
 void	ScavTrap::guardGate(void)
 {
   	std::cout << "ScavTrap \033[1;33m" << Name << "\033[0m Is in Gate Keeper Mode" << std::endl;
+}
+
+ScavTrap	&ScavTrap::operator=(ScavTrap &other)
+{
+	if (this != &other)
+	{
+		this->Name = other.Name;
+		this->HitPoints = other.HitPoints;
+		this->EnergyPoints = other.EnergyPoints;
+		this->AttackDamage = other.AttackDamage;
+	}
+	return (*this);
 }
