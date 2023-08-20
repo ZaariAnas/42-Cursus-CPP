@@ -5,27 +5,28 @@
 #                                                     +:+ +:+         +:+      #
 #    By: azari <azari@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/18 11:47:40 by azari             #+#    #+#              #
-#    Updated: 2023/08/20 12:05:21 by azari            ###   ########.fr        #
+#    Created: 2023/08/20 16:46:34 by azari             #+#    #+#              #
+#    Updated: 2023/08/20 16:46:37 by azari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= BrainZoo
+NAME		= Abstract
 YELLOW 		= \033[1;33m
 CC			= c++
 FLAGS		= -Wall -Wextra -Werror -std=c++98
 OBJDIR 		= .obj
-FILES		= main Animal Cat Dog WrongAnimal WrongCat Brain
 SRC			= $(FILES:=.cpp)
+FILES		= main AMateria Character MateriaSource Ice Cure
+HEADERS		= AMateria.hpp ICharacter.hpp Ice.hpp Cure.hpp Character.hpp \
+				MateriaSource.hpp ICharacter.hpp IMateriaSource.hpp
 OBJ			= $(addprefix $(OBJDIR)/, $(FILES:=.o))
-HEADER		= Animal.hpp Cat.hpp Dog.hpp WrongAnimal.hpp WrongCat.hpp Brain.hpp
 
 
 all: $(NAME)
 
 $(NAME): $(OBJ) $(HEADER)
 	@$(CC) $(OBJ) $(OPTS) -o $(NAME)
-	@echo "$(YELLOW) -- BrainZoo --"
+	@echo "$(YELLOW) -- Abstraction --"
 
 $(OBJDIR)/%.o: %.cpp $(HEADER)
 	@mkdir -p $(dir $@)

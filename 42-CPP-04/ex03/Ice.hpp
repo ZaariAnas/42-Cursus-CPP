@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/19 14:14:32 by azari             #+#    #+#             */
-/*   Updated: 2023/08/20 12:21:43 by azari            ###   ########.fr       */
+/*   Created: 2023/08/20 16:47:02 by azari             #+#    #+#             */
+/*   Updated: 2023/08/20 16:47:05 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGCAT_HPP
-#define WRONGCAT_HPP
 
-#include <iostream>
-#include "WrongAnimal.hpp"
+#ifndef ICE_HPP
+#define ICE_HPP
 
-class WrongCat : public WrongAnimal{
+#include "AMateria.hpp"
 
-private:
-	Brain *brain;
-public:
-	WrongCat();
-	~WrongCat();
-	WrongCat(WrongCat &other);
-	WrongCat &operator=(WrongCat &other);
-	std::string getType(void) const;
-	void makeSound() const;
+class Ice : public AMateria
+{
+
+    public:
+        Ice();
+        ~Ice();
+
+        Ice( Ice const & );
+        Ice& operator=( Ice const & );
+
+        virtual AMateria*   clone() const;
+        virtual void        use(ICharacter& target);
 };
 
-#endif
+#endif // ICE_HPP

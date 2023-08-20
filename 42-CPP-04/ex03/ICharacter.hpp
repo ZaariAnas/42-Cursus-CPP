@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/19 14:14:32 by azari             #+#    #+#             */
-/*   Updated: 2023/08/20 12:21:43 by azari            ###   ########.fr       */
+/*   Created: 2023/08/20 16:46:56 by azari             #+#    #+#             */
+/*   Updated: 2023/08/20 16:46:58 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGCAT_HPP
-#define WRONGCAT_HPP
 
+#ifndef ICHARACTER_HPP
+#define ICHARACTER_HPP
+
+#include "AMateria.hpp"
 #include <iostream>
-#include "WrongAnimal.hpp"
 
-class WrongCat : public WrongAnimal{
-
-private:
-	Brain *brain;
+class AMateria;
+class ICharacter
+{
 public:
-	WrongCat();
-	~WrongCat();
-	WrongCat(WrongCat &other);
-	WrongCat &operator=(WrongCat &other);
-	std::string getType(void) const;
-	void makeSound() const;
+    virtual ~ICharacter() {}
+    virtual std::string const & getName() const = 0;
+    virtual void equip(AMateria* m) = 0;
+    virtual void unequip(int idx) = 0;
+    virtual void use(int idx, ICharacter& target) = 0;
 };
 
 #endif

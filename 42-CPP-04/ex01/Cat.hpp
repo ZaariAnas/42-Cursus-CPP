@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 12:05:27 by azari             #+#    #+#             */
-/*   Updated: 2023/08/19 12:32:00 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/20 11:31:18 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 class Cat : public Animal{
 
+private:
+	Brain *brain;
 public:
 	Cat();
 	~Cat();

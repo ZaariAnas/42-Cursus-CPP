@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 12:01:29 by azari             #+#    #+#             */
-/*   Updated: 2023/08/19 12:31:53 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/20 11:30:57 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 class Dog : public Animal{
 
+private:
+	Brain *brain;
 public:
 	Dog();
 	~Dog();

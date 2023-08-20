@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 11:49:20 by azari             #+#    #+#             */
-/*   Updated: 2023/08/20 11:01:34 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/20 11:28:11 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define ANIMAL_H
 
 #include <iostream>
+#include "Brain.hpp"
 
 class Animal{
 
