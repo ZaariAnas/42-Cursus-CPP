@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 15:09:23 by azari             #+#    #+#             */
-/*   Updated: 2023/08/19 15:12:18 by azari            ###   ########.fr       */
+/*   Updated: 2023/08/20 09:47:07 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ public:
 	~Brain();
 	Brain(Brain &other);
 	Brain	&operator=(Brain &other);
-}
+};
 
 #endif
