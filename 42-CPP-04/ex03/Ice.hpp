@@ -5,29 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/20 16:47:02 by azari             #+#    #+#             */
-/*   Updated: 2023/08/20 16:47:05 by azari            ###   ########.fr       */
+/*   Created: 2023/08/22 10:33:06 by azari             #+#    #+#             */
+/*   Updated: 2023/08/22 13:20:18 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#ifndef ICE_HPP
-#define ICE_HPP
-
+#pragma once
 #include "AMateria.hpp"
 
 class Ice : public AMateria
 {
-
-    public:
-        Ice();
-        ~Ice();
-
-        Ice( Ice const & );
-        Ice& operator=( Ice const & );
-
-        virtual AMateria*   clone() const;
-        virtual void        use(ICharacter& target);
+	private:
+		std::string type;
+	public:
+		Ice();
+		~Ice();
+		Ice(Ice &other);
+		Ice &operator=(Ice &other);
+		AMateria* clone() const;
+		void use(ICharacter &target);
 };
-
-#endif // ICE_HPP

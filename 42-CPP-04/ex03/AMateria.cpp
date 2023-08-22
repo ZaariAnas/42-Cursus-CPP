@@ -5,46 +5,44 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/20 16:47:39 by azari             #+#    #+#             */
-/*   Updated: 2023/08/20 16:47:40 by azari            ###   ########.fr       */
+/*   Created: 2023/08/22 06:34:17 by azari             #+#    #+#             */
+/*   Updated: 2023/08/22 13:52:45 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "AMateria.hpp"
 
-AMateria::AMateria( void ) : _type("")
+AMateria::AMateria(std::string const& type)
 {
-    std::cout << "* an AMateria was Born *" << std::endl;
+	this->type = type;
+	// std::cout << "A New AMateria Was Born" << std::endl;
 }
 
-AMateria::AMateria( std::string const & type )  : _type(type)
+AMateria::~AMateria()
 {
-    std::cout << "AMateria " << this->_type << " created" << std::endl;
+	// std::cout << "An AMateria Was Destroyed" << std::endl;
 }
 
-AMateria::AMateria( AMateria const & src )
+AMateria::AMateria(AMateria& other)
 {
-    *this = src;
+	// std::cout << "Copying an AMateria" << std::endl;
+	*this = other;
 }
 
-AMateria::~AMateria( void )
+
+AMateria &AMateria::operator=(AMateria& other)
 {
-    std::cout << "an " << this->_type << " was Destroyed" << std::endl;
+	if (this != &other)
+		this->type = other.type;
+	return *this;
 }
 
-std::string const & AMateria::getType() const
+std::string const &AMateria::getType() const
 {
-    return this->_type;
+	return this->type;
 }
 
-AMateria* AMateria::clone() const
+void AMateria::use(ICharacter& target)
 {
-    return (AMateria*)this;
+	std::cout << "An " << this->getType() << " AMateria was used on " << target.getName() << std::endl;
 }
-
-void    AMateria::use( ICharacter& target )
-{
-    std::cout << "AMateria " << this->_type << " used on " << target.getName() << std::endl;
-}
-

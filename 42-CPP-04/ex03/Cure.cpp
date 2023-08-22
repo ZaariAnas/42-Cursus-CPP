@@ -5,47 +5,48 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/20 16:47:56 by azari             #+#    #+#             */
-/*   Updated: 2023/08/20 16:47:57 by azari            ###   ########.fr       */
+/*   Created: 2023/08/22 12:03:18 by azari             #+#    #+#             */
+/*   Updated: 2023/08/22 13:53:15 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "Cure.hpp"
 
-Cure::Cure( void ) : AMateria("cure")
+Cure::Cure() : AMateria("cure")
 {
-    std::cout << "* A Cure Materia was Born*" << std::endl;
-}
-
-Cure::Cure( Cure const & src ) : AMateria("cure")
-{
-    *this = src;
-    std::cout << "* A Cure Materia was Copied *" << std::endl;
-}
-
-Cure&   Cure::operator=( const Cure& rhs ) {
-    if (this != &rhs)
-    {
-        this->_type = rhs._type;
-    }
-    return *this;
+	// std::cout << "A Cure AMateria Was Made" << std::endl;
 }
 
 Cure::~Cure()
 {
-    std::cout << "* A Cure Materia was Destroyed *" << std::endl;
+	// std::cout << "A Cure AMatoria Was Destroyed" << std::endl;
 }
 
-AMateria* Cure::clone() const
+Cure::Cure(Cure &other) : AMateria("cure")
 {
-    return (new Cure(*this));
+	// std::cout << "A Cure AMatoria Was Copied" << std::endl;
+	*this = other;
 }
 
-void    Cure::use( ICharacter& target )
+Cure &Cure::operator=(Cure &other)
 {
-    std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+	if (this != &other)
+		this->type = other.type;
+	return *this;
 }
 
+AMateria	*Cure::clone() const
+{
+	AMateria *instance = new ( std::nothrow ) Cure();
+	if (!instance)
+	{
+		std::cerr << "error: memory allocation failure" << std::endl;
+		exit(1);
+	}
+	return instance;
+}
 
+void	Cure::use(ICharacter &target)
+{
+	std::cout << "* heals " << target.getName() << "'s woonds *" << std::endl;
+}

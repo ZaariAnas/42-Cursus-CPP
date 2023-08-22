@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/20 16:46:27 by azari             #+#    #+#             */
-/*   Updated: 2023/08/20 16:46:30 by azari            ###   ########.fr       */
+/*   Created: 2023/08/22 13:06:19 by azari             #+#    #+#             */
+/*   Updated: 2023/08/22 14:32:17 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,53 +14,66 @@
 
 MateriaSource::MateriaSource()
 {
-    for (int i = 0; i < 4; i++)
-        materias[i] = NULL;
+	for (int i = 0; i < 4; i++)
+		this->materias[i] = NULL;
+	// std::cout << "A New MateriaSource Was Born" << std::endl;
 }
 
 MateriaSource::~MateriaSource()
 {
-    for (int i = 0; i < 4; i++)
-        if (materias[i])
-            delete materias[i];
+	for (int i = 0; i < 4; i++)
+		if (this->materias[i])
+			delete this->materias[i];
+	// std::cout << "A MateriaSource Was Destroyed" << std::endl;
 }
 
-MateriaSource::MateriaSource(MateriaSource const & src)
+MateriaSource::MateriaSource(MateriaSource& other)
 {
-    *this = src;
+	// std::cout << "Copying an MateriaSource" << std::endl;
+	*this = other;
 }
 
-MateriaSource& MateriaSource::operator=( MateriaSource const & rhs )
+
+MateriaSource &MateriaSource::operator=(MateriaSource& other)
 {
-    if (this != &rhs)
-    {
-        for (int i = 0; i < 4; i++)
-            materias[i] = rhs.materias[i];
-    }
-    return *this;
+	if (this != &other)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			if (this->materias[i])
+			{
+				delete this->materias[i];
+				this->materias[i] = NULL;
+			}
+			this->materias[i] = other.materias[i]->clone();
+		}
+	}
+	return *this;
 }
 
-AMateria* MateriaSource::getMateria( std::string const & type )
+void	MateriaSource::learnMateria(AMateria *materia)
 {
-    for (int i = 0; i < 4; i++)
-        if (materias[i] && materias[i]->getType() == type)
-            return materias[i];
-    return NULL;
+	int i;
+	for (i = 0; i < 4; i++)
+	{
+		if (!this->materias[i])
+		{
+			this->materias[i] = materia;
+			std::cout << this->materias[i]->getType() << " Materia learned " << std::endl;
+			break;
+		}
+	}	
+	if (i > 3)	
+		std::cout << materia->getType() << " Materia not learned" << std::endl;
 }
 
-void    MateriaSource::learnMateria( AMateria* m )
+AMateria* MateriaSource::createMateria(std::string const & type)
 {
-    for (int i = 0; i < 4; i++)
-        if (materias[i] == NULL)
-        {
-            materias[i] = m;
-            return;
-        }
-}
-
-AMateria*   MateriaSource::createMateria( std::string const& type ) {
-    for ( int i = 0; i < 4; i++ )
-        if ( materias[i] && materias[i]->getType() == type )
-            return materias[i]->clone();
-    return NULL;
+	
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->materias[i] && this->materias[i]->getType() == (type))
+			return this->materias[i]->clone();
+	}
+	return 0;
 }

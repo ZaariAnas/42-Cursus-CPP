@@ -5,29 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/20 16:48:00 by azari             #+#    #+#             */
-/*   Updated: 2023/08/20 16:48:01 by azari            ###   ########.fr       */
+/*   Created: 2023/08/22 06:48:22 by azari             #+#    #+#             */
+/*   Updated: 2023/08/22 13:20:30 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
-#ifndef CURE_HPP
-#define CURE_HPP
-
+#pragma once
 #include "AMateria.hpp"
+
 
 class Cure : public AMateria
 {
-    public:
-        Cure();
-        ~Cure();
-
-        Cure( Cure const & );
-        Cure& operator=( Cure const & );
-
-        virtual AMateria*   clone() const;
-        virtual void        use(ICharacter& target);
+	private:
+		std::string type;
+	public:
+		Cure();
+		~Cure();
+		Cure(Cure &other);
+		Cure &operator=(Cure &other);
+		AMateria* clone() const;
+		void use(ICharacter &target);
 };
-
-#endif // CURE_HPP
