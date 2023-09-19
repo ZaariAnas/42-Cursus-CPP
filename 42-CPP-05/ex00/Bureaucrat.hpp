@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/04 10:51:15 by azari             #+#    #+#             */
-/*   Updated: 2023/09/04 12:26:21 by azari            ###   ########.fr       */
+/*   Created: 2023/09/19 06:59:08 by azari             #+#    #+#             */
+/*   Updated: 2023/09/19 10:27:11 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,26 @@
 class Bureaucrat
 {
 	private:
-		
 		const std::string _name;
-		int	_grade;
-
+		int _grade;
 	public:
-
-		Bureaucrat();
+		Bureaucrat(Bureaucrat &other);
 		Bureaucrat(std::string name, int grade);
 		Bureaucrat &operator=(Bureaucrat& other);
-		Bureaucrat(Bureaucrat& other);
-		const std::string	getName() const;
-		void decrementGrade();
-		void incrementGrade();
-		int	getGrade() const;
 		~Bureaucrat();
-		
+		std::string getName();
+		int getGrade();
+		void	IncrementGrade();
+		void	DecrementGrade();
+	
 	class GradeTooHighException : public std::exception{
 		public:
-			virtual const char* what() const throw(){ return "Bureaucrat's Grade is too High"; }
+			virtual const char* what() const throw();
 	};
 	
 	class GradeTooLowException : public std::exception{
 		public:
-			virtual const char* what() const throw(){ return "Bureaucrat's Grade is too Low"; }
+			virtual const char* what() const throw();
 	};
-};
 
-std::ostream &operator<<(std::ostream &os, Bureaucrat& b);
+};

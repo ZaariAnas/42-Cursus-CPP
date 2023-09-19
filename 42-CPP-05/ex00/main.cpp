@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/04 11:31:54 by azari             #+#    #+#             */
-/*   Updated: 2023/09/04 12:39:46 by azari            ###   ########.fr       */
+/*   Created: 2023/09/19 09:31:58 by azari             #+#    #+#             */
+/*   Updated: 2023/09/19 10:27:39 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,13 @@
 
 int main()
 {
-	try 
-	{
-		Bureaucrat Jimmy("Jimmy", 1);
-		// Bureaucrat Prob("Jimmy", -1);
-		
-		std::cout << "Jimmy's grade : " << Jimmy << std::endl;
-		Jimmy.incrementGrade();
-		std::cout << "Unreached Region" << std::endl;
+	try{
+
+		Bureaucrat foo("foo", 149);
+		foo.DecrementGrade();
+		Bureaucrat poo("foo", -1);
 	}
-	catch (Bureaucrat::GradeTooHighException &exception)
-	{
-		std::cout << exception.what() << std::endl;
+	catch( std::exception &e ){
+		std::cout << e.what() << std::endl;
 	}
 }
