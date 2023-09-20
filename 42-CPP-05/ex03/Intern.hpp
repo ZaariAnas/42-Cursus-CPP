@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/19 17:36:07 by azari             #+#    #+#             */
-/*   Updated: 2023/09/20 17:40:09 by azari            ###   ########.fr       */
+/*   Created: 2023/09/20 16:31:07 by azari             #+#    #+#             */
+/*   Updated: 2023/09/20 17:32:04 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#pragma once
+#include <iostream>
 #include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
-#include "Intern.hpp"
+#include "RobotomyRequestForm.hpp"
 
-int main()
+class Intern
 {
-    try
-    {
-        Intern someRandomIntern;
-        AForm* rrf;
-        rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-        Bureaucrat Jimmy("Jimmy", 1);
-        std::cout << "-----------------------------------------" << std::endl;
-    }
-    catch (std::exception &ex){
-        std::cout << ex.what() << std::endl;
-    }
-}
+    private:
+        const std::string _formName;
+        const std::string _formTarget;
+    public:
+        Intern();
+		Intern(Intern &copy);
+		Intern &operator=(Intern& other);
+		~Intern();
+        AForm*  makeForm(std::string formName, std::string formTarget);
+
+    class UnknownFormException : public std::exception {
+        public:
+            virtual const char* what() const throw();
+    };
+};
