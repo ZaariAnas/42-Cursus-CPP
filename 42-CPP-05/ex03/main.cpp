@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:36:07 by azari             #+#    #+#             */
-/*   Updated: 2023/09/20 17:40:09 by azari            ###   ########.fr       */
+/*   Updated: 2023/09/21 08:37:33 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int main()
         AForm* rrf;
         rrf = someRandomIntern.makeForm("robotomy request", "Bender");
         Bureaucrat Jimmy("Jimmy", 1);
+        // Jimmy.signForm(*rrf);
+        Jimmy.executeForm(*rrf);
         std::cout << "-----------------------------------------" << std::endl;
     }
     catch (std::exception &ex){
