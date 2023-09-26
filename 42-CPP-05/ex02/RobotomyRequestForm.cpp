@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:59:28 by azari             #+#    #+#             */
-/*   Updated: 2023/09/20 16:21:29 by azari            ###   ########.fr       */
+/*   Updated: 2023/09/26 09:34:53 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const {
 		throw AForm::GradeTooLowException();
 
 	std::cout << "VVVNNNNNNN VVVNNNNNNNN VNNNNNNNNNNN" << std::endl;
-	if (!(std::time(nullptr) % 2))
+	if (!(std::time(NULL) % 2))
 		std::cout << _target << " has been robotomized successfully !" << std::endl;		
 	else
 		std::cout << "Robotomy failed for " << _target << std::endl;

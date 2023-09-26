@@ -6,12 +6,15 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:40:17 by azari             #+#    #+#             */
-/*   Updated: 2023/09/20 09:26:56 by azari            ###   ########.fr       */
+/*   Updated: 2023/09/26 09:47:00 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
+Form::Form() : _name("Form"), _SignGrade(1), _ExecGrade(1){
+	std::cout << "Form Default Constructor Called" << std::endl;
+}
 Form::~Form() {
 	std::cout << "Form\033[1;32m "<< _name << "\033[0m Destructor Called" << std::endl;		
 }
@@ -25,15 +28,15 @@ Form::Form(std::string name, int sgrade, int egrade) : _name(name), _SignGrade(s
 	std::cout << "Form\033[1;32m "<< _name << "\033[0m Constructor Called" << std::endl;		
 }
 
-int	Form::getExecGrade() {
+int	Form::getExecGrade() const{
 	return this->_ExecGrade;
 }
 
-int	Form::getSignGrade() {
+int	Form::getSignGrade() const{
 	return this->_SignGrade;
 }
 
-std::string	Form::getName() {
+const std::string	Form::getName() const{
 	return this->_name;
 }
 

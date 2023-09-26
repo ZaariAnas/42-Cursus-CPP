@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 07:50:09 by azari             #+#    #+#             */
-/*   Updated: 2023/09/19 10:30:50 by azari            ###   ########.fr       */
+/*   Updated: 2023/09/26 09:41:06 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 Bureaucrat::~Bureaucrat() {
 	std::cout << "Bureaucrat\033[1;32m "<< _name << "\033[0m Destructor Called" << std::endl;		
+}
+
+Bureaucrat::Bureaucrat() :_name("Bureaucrat"), _grade(1){
+	std::cout << "Bureaucrat Default Constructor Called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
@@ -25,15 +29,15 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
 	std::cout << "Bureaucrat\033[1;32m "<< _name << "\033[0m Constructor Called" << std::endl;		
 }
 
-int	Bureaucrat::getGrade() {
+int	Bureaucrat::getGrade() const{
 	return this->_grade;
 }
 
-std::string	Bureaucrat::getName() {
+const std::string	Bureaucrat::getName() const{
 	return this->_name;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat& other) {
+Bureaucrat::Bureaucrat(Bureaucrat& other): _name("copy" + other.getName()) {
 	*this = other;
 }
 
@@ -56,9 +60,16 @@ void	Bureaucrat::IncrementGrade() {
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw(){
-	return "\n\033[3;31merror: Grade Too High\n";
+	return "\n\033[3;31merror: Grade Too High\033[0;0m\n";
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw(){
-	return "\n\033[3;31merror: Grade Too Low\n";
+	return "\n\033[3;31merror: Grade Too Low\033[0;0m\n";
+}
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& b){
+
+	os	<< "\033[1;32m"<< b.getName() << "\033[0m, bureaucrat grade " 
+		<< "\033[1;32m"<< b.getGrade() << "\033[0m" << std::endl;
+	return os;
 }

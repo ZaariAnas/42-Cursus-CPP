@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:39:02 by azari             #+#    #+#             */
-/*   Updated: 2023/09/21 08:35:57 by azari            ###   ########.fr       */
+/*   Updated: 2023/09/26 09:38:20 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ AForm*    Intern::makeForm(std::string formName, std::string formTarget)
     };
     
     Constructors funcs[3] = {
-        ConstructPresidentialPardonForm,
         ConstructRobotomyForm,
+        ConstructPresidentialPardonForm,
         ConstructShurbberyForm
     };
 

@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Character.hpp                                      :+:      :+:    :+:   */
+/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 10:27:05 by azari             #+#    #+#             */
-/*   Updated: 2023/09/23 12:47:26 by azari            ###   ########.fr       */
+/*   Created: 2023/09/21 09:39:07 by azari             #+#    #+#             */
+/*   Updated: 2023/09/25 12:01:44 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
-#include "ICharacter.hpp"
-#include "AMateria.hpp"
 
-class Character : public ICharacter
+class ScalarConverter
 {
-	private:
-		std::string name;
-		AMateria	*_inventory[4];
-	public:
-		~Character();
-		Character(std::string name);
-		Character(Character &other);
-		Character &operator=(Character &other);
-		std::string const & getName() const;
-		void equip(AMateria* m);
-		void unequip(int idx);
-		void use(int idx, ICharacter& target);
+        ScalarConverter();
+        ScalarConverter(ScalarConverter& copy);
+        ScalarConverter& operator=(ScalarConverter& other);
+        ~ScalarConverter();
+    public:
+        static void convert(std::string litteral);
 };

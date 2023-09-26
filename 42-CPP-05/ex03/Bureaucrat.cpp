@@ -6,11 +6,15 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 09:29:37 by azari             #+#    #+#             */
-/*   Updated: 2023/09/20 15:10:17 by azari            ###   ########.fr       */
+/*   Updated: 2023/09/26 09:40:35 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+
+Bureaucrat::Bureaucrat() :_name("Bureaucrat"), _grade(1){
+	std::cout << "Bureaucrat Default Constructor Called" << std::endl;
+}
 
 Bureaucrat::~Bureaucrat() {
 	std::cout << "Bureaucrat\033[1;32m "<< _name << "\033[0m Destructor Called" << std::endl;		
@@ -29,7 +33,7 @@ int	Bureaucrat::getGrade() const {
 	return this->_grade;
 }
 
-std::string	Bureaucrat::getName() {
+const std::string	Bureaucrat::getName() const{
 	return this->_name;
 }
 
@@ -83,4 +87,11 @@ const char* Bureaucrat::GradeTooHighException::what() const throw(){
 
 const char* Bureaucrat::GradeTooLowException::what() const throw(){
 	return "\n\033[3;31merror: Grade Too Low\n\033[0;0m";
+}
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& b){
+
+	os	<< "\033[1;32m"<< b.getName() << "\033[0m, bureaucrat grade " 
+		<< "\033[1;32m"<< b.getGrade() << "\033[0m" << std::endl;
+	return os;
 }

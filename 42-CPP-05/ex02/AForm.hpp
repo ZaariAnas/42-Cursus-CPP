@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 09:18:38 by azari             #+#    #+#             */
-/*   Updated: 2023/09/20 14:13:33 by azari            ###   ########.fr       */
+/*   Updated: 2023/09/26 09:53:37 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,11 @@ class AForm
 		
 	public:
 
+		AForm();
 		AForm(AForm &other);
 		AForm(std::string name, int sgrade, int egrade);
 		AForm &operator=(AForm& other);
-		std::string getName() const;
+		const std::string getName() const;
 		int getExecGrade() const;
 		int getSignGrade() const;
 		bool getSigState() const;

@@ -6,11 +6,13 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 09:28:10 by azari             #+#    #+#             */
-/*   Updated: 2023/09/20 15:05:52 by azari            ###   ########.fr       */
+/*   Updated: 2023/09/26 09:40:02 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
+
+AForm::AForm() : _name("Form"), _SignGrade(1), _ExecGrade(1){}
 
 AForm::~AForm() {
 	std::cout << "AForm\033[1;32m "<< _name << "\033[0m Destructor Called" << std::endl;		

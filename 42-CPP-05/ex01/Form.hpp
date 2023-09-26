@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:33:57 by azari             #+#    #+#             */
-/*   Updated: 2023/09/19 15:10:18 by azari            ###   ########.fr       */
+/*   Updated: 2023/09/26 09:46:00 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@ class Form
 		
 	public:
 
+		Form();
 		Form(Form &other);
 		Form(std::string name, int sgrade, int egrade);
 		Form &operator=(Form& other);
 		~Form();
-		std::string getName();
-		int getExecGrade();
-		int getSignGrade();
+		const std::string getName() const;
+		int getExecGrade() const;
+		int getSignGrade() const;
 		bool getSigState();
 		void beSigned(Bureaucrat &b);
 		
