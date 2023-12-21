@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 08:39:06 by azari             #+#    #+#             */
-/*   Updated: 2023/12/21 10:22:58 by azari            ###   ########.fr       */
+/*   Updated: 2023/12/21 12:59:11 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,6 @@ ScalarConverter::ScalarConverter(){}
 ScalarConverter::~ScalarConverter(){}
 ScalarConverter::ScalarConverter(ScalarConverter& copy){(void)copy;}
 ScalarConverter& ScalarConverter::operator=(ScalarConverter& other){(void)other; return *this;}
-
-int ScalarConverter::_int = 0;
-float ScalarConverter::_float = 0;
-double ScalarConverter::_double = 0;
-char ScalarConverter::_char = 0;
-bool ScalarConverter::_Convertible = false;
-bool ScalarConverter::_Displayable = false;
-bool ScalarConverter::_Impossible = false;
-bool ScalarConverter::_CharOutOfRange = false;
-bool ScalarConverter::_IntOutOfRange = false;
-bool ScalarConverter::_FloatOutOfRange = false;
-bool ScalarConverter::_DoubleOutOfRange = false;
 
 int raiseArgError()
 {
@@ -43,7 +31,45 @@ void raiseValueError()
                 << std::endl;
 }
 
-bool ConvertSpecialVar(std::string& litteral)
+void ScalarConverter::ConvertCharVar(std::string& litteral)
+{
+    int res = static_cast<int>(std::atof(litteral.c_str()));
+    if (res < 0 || res > 127)
+        std::cout << "char  : Impossible" << std::endl;
+    else if (res < 32 || res > 126)
+        std::cout << "char  : Non displayable" << std::endl;
+    else
+        std::cout << "char  : \'" << static_cast<char>(std::atof(litteral.c_str())) << "\'" << std::endl;
+}
+
+void ScalarConverter::ConvertIntVar(std::string& litteral)
+{
+    long res = static_cast<long>(std::atof(litteral.c_str()));
+    if (res < std::numeric_limits<int>::min() || res > std::numeric_limits<int>::max())
+        std::cout << "int   : Impossible" << std::endl;
+    else
+        std::cout << "int   : " << static_cast<int>(std::atof(litteral.c_str())) << std::endl;
+}
+
+void ScalarConverter::ConvertFloatVar(std::string& litteral)
+{
+    float res = std::atof(litteral.c_str());
+    if (res - static_cast<int>(res) == 0)
+        std::cout << "float : " << res << ".0f" << std::endl;
+    else
+        std::cout << "float : " << res << "f" << std::endl;
+}
+
+void ScalarConverter::ConvertDoubleVar(std::string& litteral)
+{
+    double res = std::atof(litteral.c_str());
+    if (res - static_cast<int>(res) == 0)
+        std::cout << "double: " << res << ".0" << std::endl;
+    else
+        std::cout << "double: " << res << std::endl;
+}
+
+bool ScalarConverter::ConvertSpecialVar(std::string& litteral)
 {
     static std::string specialVar[6] = {V_NAN, V_NANF, V_INF, V_INFF, V_MINF, V_MINFF};
     static std::string specialVarfloat[6] = {V_NANF, V_NANF, V_INFF, V_INFF, V_MINFF, V_MINFF};
@@ -53,16 +79,19 @@ bool ConvertSpecialVar(std::string& litteral)
     {
         if (litteral == specialVar[i])
         {
-            std::cout << "Char  : impossible" << std::endl;
-            std::cout << "Int   : impossible" << std::endl;
-            std::cout << "Float : " << specialVarfloat[i] << std::endl;
-            std::cout << "Double: " << specialVardouble[i] << std::endl;
+            std::cout << "char  : impossible" << std::endl;
+            std::cout << "int   : impossible" << std::endl;
+            std::cout << "float : " << specialVarfloat[i] << std::endl;
+            std::cout << "double: " << specialVardouble[i] << std::endl;
             return true;
         }
     }
-    if (litteral[0] == '\'' && litteral[litteral.length() - 1] == '\'')
+    if (litteral.length() == 3 && litteral[0] == '\'' && litteral[2] == '\'')
     {
-        // ConvertCharVar(litteral);
+        std::cout << "char  : " << litteral[1] << std::endl;
+        std::cout << "int   : " << static_cast<int> (litteral[1]) << std::endl;
+        std::cout << "float : " << static_cast<float> (litteral[1]) << ".0f" << std::endl;
+        std::cout << "double: " << static_cast<double> (litteral[1]) << ".0" << std::endl;
         return true;
     }
     return false;
@@ -74,11 +103,7 @@ bool ScalarConverter::CheckStringValidity(std::string& litteral)
     int dot = 0;
     bool sign = false;
     size_t i = 0;
-    if(litteral[i] == '+' || litteral[i] == '-')
-    {
-        i++;
-        sign = true;
-    }
+    if(litteral[i] == '+' || litteral[i] == '-'){ i++; sign = true; }
     if(litteral.length() == i)
         return false;
     for (; i < litteral.length(); i++)
@@ -100,12 +125,12 @@ bool ScalarConverter::CheckStringValidity(std::string& litteral)
 
 void ScalarConverter::convert(std::string& litteral)
 {
-    float a = .1f;
-    std::cout << a << std::endl;
     if (ConvertSpecialVar(litteral))
         return;
     else if (CheckStringValidity(litteral) == false)
         return raiseValueError();
-    std::cout << "valid input" << std::endl;
-        // return raiseTypeError();
+    ConvertCharVar(litteral);
+    ConvertIntVar(litteral);
+    ConvertFloatVar(litteral);
+    ConvertDoubleVar(litteral);
 }
