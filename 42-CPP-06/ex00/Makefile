@@ -6,11 +6,11 @@
 #    By: azari <azari@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/21 09:38:48 by azari             #+#    #+#              #
-#    Updated: 2023/09/25 10:38:10 by azari            ###   ########.fr        #
+#    Updated: 2023/12/20 15:59:58 by azari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= Bureaucrat
+NAME		= convert
 YELLOW 		= \033[1;33m
 CC			= c++
 FLAGS		= -Wall -Wextra -Werror -std=c++98
@@ -25,7 +25,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ) $(HEADER)
 	@$(CC) $(OBJ) $(OPTS) -o $(NAME)
-	@echo "$(YELLOW) -- Bureaucrat --"
+	@echo "$(YELLOW) -- ScalarConverter --"
 
 $(OBJDIR)/%.o: %.cpp $(HEADER)
 	@mkdir -p $(dir $@)
