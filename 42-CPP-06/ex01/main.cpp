@@ -9,7 +9,6 @@ int main()
     Data *casted = Serializer::deserialize(raw);
     std::cout << casted->car << std::endl;
     std::cout << std::fixed << std::setprecision(2) << casted->price << "$"<< std::endl;
-    std::cout 
     delete data;
     return 0;
 }

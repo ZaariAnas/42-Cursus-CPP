@@ -1,12 +1,12 @@
 NAME		= Serialize
 YELLOW 		= \033[1;33m
 CC			= c++
-FLAGS		= -Wall -Wextra -Werror -std=c++98
+FLAGS		= -Wall -Wextra -Werror -std=c++98 #-fno-rtti
 OBJDIR 		= .obj
-FILES		= main Serializer
+FILES		= main Base
 SRC			= $(FILES:=.cpp)
 OBJ			= $(addprefix $(OBJDIR)/, $(FILES:=.o))
-HEADER		= Serializer.hpp Data.hpp
+HEADER		= Base.hpp A.hpp B.hpp C.hpp
 
 
 all: $(NAME)
