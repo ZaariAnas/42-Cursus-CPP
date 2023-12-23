@@ -1,19 +1,22 @@
-NAME		= convert
+NAME		= Serialize
 YELLOW 		= \033[1;33m
 CC			= c++
 FLAGS		= -Wall -Wextra -Werror -std=c++98
 OBJDIR 		= .obj
-FILES		= main ScalarConverter
+FILES		= main Serializer
 SRC			= $(FILES:=.cpp)
 OBJ			= $(addprefix $(OBJDIR)/, $(FILES:=.o))
-HEADER		= ScalarConverter.hpp
+HEADER		= Serializer.hpp Data.hpp
+
+
+
 
 
 all: $(NAME)
 
 $(NAME): $(OBJ) $(HEADER)
 	@$(CC) $(OBJ) $(OPTS) -o $(NAME)
-	@echo "$(YELLOW) -- ScalarConverter --"
+	@echo "$(YELLOW) -- Serialisation --"
 
 $(OBJDIR)/%.o: %.cpp $(HEADER)
 	@mkdir -p $(dir $@)

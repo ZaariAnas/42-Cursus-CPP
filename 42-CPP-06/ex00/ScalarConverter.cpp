@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 08:39:06 by azari             #+#    #+#             */
-/*   Updated: 2023/12/21 12:59:11 by azari            ###   ########.fr       */
+/*   Updated: 2023/12/21 14:43:17 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void ScalarConverter::ConvertCharVar(std::string& litteral)
 
 void ScalarConverter::ConvertIntVar(std::string& litteral)
 {
-    long res = static_cast<long>(std::atof(litteral.c_str()));
+    long long res = static_cast<long>(std::atof(litteral.c_str()));
     if (res < std::numeric_limits<int>::min() || res > std::numeric_limits<int>::max())
         std::cout << "int   : Impossible" << std::endl;
     else
