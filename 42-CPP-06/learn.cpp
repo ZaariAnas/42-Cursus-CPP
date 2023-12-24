@@ -12,7 +12,6 @@ int main() {
     std::cout << "Characters: " << buffer << std::endl;
     int* intPtr = reinterpret_cast<int*>(buffer);
     std::cout << "expected [1819043144] / output [" << *intPtr << "]" << std::endl;
-    std::cout << "expected [1819043144] / output [" << *((int *)buffer) << "]" << std::endl;
     // value of H is 72, e is 101, l is 108 (in ASCII)
     // meaning H is --> 01001000
     // meaning e is --> 01100101
