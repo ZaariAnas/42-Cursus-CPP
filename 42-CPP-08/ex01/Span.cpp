@@ -45,3 +45,11 @@ int Span::longestSpan() const
     std::sort(s_vec.begin(), s_vec.end());
     return s_vec.back() - s_vec.front();
 }
+
+void Span::addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+    if (static_cast<unsigned int>(v.size() + end - begin) > N)
+        throw std::runtime_error("error: insufficient container size");
+    while (begin != end)
+        addNumber(*begin++);
+}
