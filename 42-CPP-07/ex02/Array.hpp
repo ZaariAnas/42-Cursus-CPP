@@ -1,47 +1,40 @@
 #pragma once
 #include <iostream>
 
-template <typename T> class Array {
 
-private:
-    T * _array;
-    unsigned int _size;
-public:
-    Array(){
-        _array = new T[0];
-        _size = 0;
-    };
+template <typename T> class Array
+{
+    private:
+        T* array;
+        unsigned int _size;
+    public:
+        Array(){ array = new T[0]; _size = 0; }
 
-    Array(unsigned int n){
-        _array = new T[n];
-        _size = n;
-    };
+        Array(unsigned int n) { _size = n; array = new T[n]; }
 
-    Array(const Array& copy) : _array(NULL), _size(copy._size)
-    {
-        if(this != &copy)
-            *this = copy;
-    }
+        Array(Array & copy) : array(NULL), _size(copy._size) { *this = copy; }
 
-    Array& operator=(const Array& copy)
-    {
-        unsigned int i;
-        if(this != &copy)
+        Array & operator=(Array & copy)
         {
-            if(_array)
-                delete[] _array;
-            _array = new T[copy._size];
-            for(i = 0; i < copy._size ; i++)
-                _array[i] = copy._array[i];
+            if (this != &copy)
+            {
+                if (array) delete[] array;
+                array = new T[_size];
+                for (unsigned int i = 0; i < _size; i++)
+                    array[i] = copy.array[i];
+            }
+            return *this;
         }
-        return *this;
-    }
 
-    T& operator[](unsigned int i){
-        if (i >= _size)
-            throw std::exception();
-        return _array[i];
-    }
-    ~Array(){if (_array) delete[] _array;}
-    int size() const {return this->_size;}
+        T & operator[](unsigned int index)
+        {
+            if (index >= _size || index < 0)
+                throw std::exception();
+            return array[index];
+        }
+
+        int size() const { return _size; }
+
+        ~Array(){ if(array) delete[] array;}
+
 };

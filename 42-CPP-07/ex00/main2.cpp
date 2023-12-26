@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Array.hpp"
+#include <Array.hpp>
 
 #define MAX_VAL 750
 int main(int, char**)
@@ -29,7 +29,7 @@ int main(int, char**)
     }
     try
     {
-        numbers[-999999999] = 0;
+        numbers[-2] = 0;
     }
     catch(const std::exception& e)
     {
