@@ -12,12 +12,12 @@ HEADER		= MutantStack.hpp
 all: $(NAME)
 
 $(NAME): $(OBJ) $(HEADER)
-	@$(CC) $(OBJ) $(OPTS) -o $(NAME)
+	@$(CC) $(OBJ) -o $(NAME)
 	@echo "$(YELLOW) -- Mutated abomination --"
 
 $(OBJDIR)/%.o: %.cpp $(HEADER)
 	@mkdir -p $(dir $@)
-	@$(CC) $(FLAGS) $(OPTS) -c $< -o $@
+	@$(CC) $(FLAGS) -c $< -o $@
 	@echo "$(YELLOW) ⏳ Setup ongoing"
 
 clean:

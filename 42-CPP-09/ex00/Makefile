@@ -1,19 +1,19 @@
-NAME		= easyfind
+NAME		= btc
 YELLOW 		= \033[1;33m
 CC			= c++
 FLAGS		= -Wall -Wextra -Werror -std=c++98
 OBJDIR 		= .obj
-FILES		= main
+FILES		= main BitcoinExchange
 SRC			= $(FILES:=.cpp)
 OBJ			= $(addprefix $(OBJDIR)/, $(FILES:=.o))
-HEADER		= easyfind.hpp
+HEADER		= BitcoinExchange.hpp
 
 
 all: $(NAME)
 
 $(NAME): $(OBJ) $(HEADER)
 	@$(CC) $(OBJ) -o $(NAME)
-	@echo "$(YELLOW) -- Easy Find --"
+	@echo "$(YELLOW) -- Bitcoin Exchange --"
 
 $(OBJDIR)/%.o: %.cpp $(HEADER)
 	@mkdir -p $(dir $@)
