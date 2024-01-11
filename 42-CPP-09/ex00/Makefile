@@ -6,7 +6,7 @@ OBJDIR 		= .obj
 FILES		= main BitcoinExchange
 SRC			= $(FILES:=.cpp)
 OBJ			= $(addprefix $(OBJDIR)/, $(FILES:=.o))
-HEADER		= BitcoinExchange.hpp
+HEADER		= BitcoinExchange.hpp MACS.hpp
 
 
 all: $(NAME)
