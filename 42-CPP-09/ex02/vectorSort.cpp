@@ -164,10 +164,17 @@ void vectorSort::Ford_Johnson_vectorSort()
     std::vector<int> pending;
     std::vector<int> insertComb;
 
+    if (vec.size() < 2)
+        return;
     generateSortedPairs(pending);
     combineJacobsIndexes(pending.size(), insertComb);
     for (size_t i = 0; i < insertComb.size(); i++)
         binaryInsertion(pending[insertComb[i]]);
     if (this->oddLast != -1)
         binaryInsertion(this->oddLast);
+}
+
+int  vectorSort::getvecSize()
+{
+    return this->vec.size();
 }

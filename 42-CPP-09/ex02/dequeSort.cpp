@@ -163,10 +163,17 @@ void dequeSort::Ford_Johnson_dequeSort()
     std::deque<int> pending;
     std::deque<int> insertComb;
 
+    if (deq.size() < 2)
+        return;
     generateSortedPairs(pending);
     combineJacobsIndexes(pending.size(), insertComb);
     for (size_t i = 0; i < insertComb.size(); i++)
         binaryInsertion(pending[insertComb[i]]);
     if (this->oddLast != -1)
         binaryInsertion(this->oddLast);
+}
+
+int  dequeSort::getdeqSize()
+{
+    return this->deq.size();
 }

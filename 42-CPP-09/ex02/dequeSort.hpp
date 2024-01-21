@@ -20,4 +20,5 @@ class dequeSort
         void mergeSortPairs(std::deque<std::pair<int, int> >&);
         void mergePairs(std::deque<std::pair<int, int> >&, std::deque<std::pair<int, int> >&, std::deque<std::pair<int, int> >&);
         void binaryInsertion(int val);
+        int  getdeqSize();
 };

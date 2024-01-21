@@ -15,10 +15,12 @@ class BitcoinExchange
         void parseCsvFile(std::fstream & file);
         void parseInputFile(std::fstream & input);
         void print_value(std::string &);
-        void checkDate(std::fstream & file, std::string & date);
-        double checkValue(std::fstream & file, std::string & value);
+        bool checkDateInput(std::string & date);
+        void checkDateCsv(std::fstream & file, std::string & date);
+        double checkValue(std::string & value);
         void checkExchangeRate(std::fstream & file, std::string &);
         void raiseRuntimeException(const std::string & error, std::fstream & file);
+        void raiseRuntimeExceptionOut(const std::string& error);
         void generateBitcoinValue(std::string & date, double value);
     private:
         std::map<std::string, double> _data_csv;

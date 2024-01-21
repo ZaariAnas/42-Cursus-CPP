@@ -20,4 +20,5 @@ class vectorSort
         void mergeSortPairs(std::vector<std::pair<int, int> >&);
         void mergePairs(std::vector<std::pair<int, int> >&, std::vector<std::pair<int, int> >&, std::vector<std::pair<int, int> >&);
         void binaryInsertion(int val);
+        int  getvecSize();
 };

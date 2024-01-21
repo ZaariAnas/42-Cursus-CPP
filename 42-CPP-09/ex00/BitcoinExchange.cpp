@@ -26,7 +26,37 @@ void BitcoinExchange::raiseRuntimeException(const std::string& error, std::fstre
     throw std::runtime_error(error);
 }
 
-void    BitcoinExchange::checkDate(std::fstream & file, std::string & date)
+void BitcoinExchange::raiseRuntimeExceptionOut(const std::string& error)
+{
+    std::cout << error << std::endl;
+}
+
+bool    BitcoinExchange::checkDateInput(std::string & date)
+{
+    if (date.length() != 10)
+        return (raiseRuntimeExceptionOut(UNVALID_DATE), false);
+    for (int i =0; i < 10; i++)
+    {
+        if (!std::isdigit(date[i]) && date[i] != '-')
+            return (raiseRuntimeExceptionOut(UNVALID_DATE), false);
+    }
+    int year = std::atoi(date.substr(0, 4).c_str());
+    int month = std::atoi(date.substr(5, 2).c_str());
+    int day = std::atoi(date.substr(8, 2).c_str());
+
+    if (year < 2009 || year > 2023 || month < 1 || month > 12 || day < 1 || day > 31)
+        return (raiseRuntimeExceptionOut(UNVALID_DATE_RANGE), false);
+    if (month == 2 && day > 28 && !(((year % 4 == 0) && (year % 100 != 0)) || year % 400 == 0))
+		return (raiseRuntimeExceptionOut(UNVALID_DATE_DAY), false);
+
+	int month_limits[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	if (day > month_limits[month - 1])
+		return (raiseRuntimeExceptionOut(UNVALID_DATE_DAY), false);
+    return true;
+
+}
+
+void    BitcoinExchange::checkDateCsv(std::fstream & file, std::string & date)
 {
     if (date.length() != 10)
         raiseRuntimeException(UNVALID_DATE, file);
@@ -59,16 +89,23 @@ void    BitcoinExchange::checkExchangeRate(std::fstream & file, std::string & e_
     }
 }
 
-double    BitcoinExchange::checkValue(std::fstream & file, std::string & value)
+double    BitcoinExchange::checkValue(std::string & value)
 {
+    if(*value.begin() == '.' || *value.rbegin() == '.' || value.empty() || value.at(0) == ' ')
+    {
+        raiseRuntimeExceptionOut(UNVALID_VALUE);
+        return -1;
+    }
     for (int i = 0; i < (int)value.length(); i++)
     {
+        if (value[i] )
+            continue;
         if (!std::isdigit(value[i]) && value[i] != '.')
-            raiseRuntimeException(UNVALID_VALUE, file);
+            raiseRuntimeExceptionOut(UNVALID_VALUE);
     }
     double val = std::strtod(value.c_str(), NULL);
     if (val < 0 || val > 1000)
-        raiseRuntimeException((val < 0) ? NEGATIVE_NUM : NUMBER_TOO_LARGE, file);
+        raiseRuntimeExceptionOut((val < 0) ? NEGATIVE_NUM : NUMBER_TOO_LARGE);
     return val;
 }
 
@@ -93,11 +130,11 @@ void    BitcoinExchange::parseCsvFile(std::fstream &file)
         raiseRuntimeException(UNVAILD_CSV_HEADER, file);
     while (std::getline(file, line))
     {
-        std::string date = line.substr(0, line.find(','));
-        std::string e_rate = line.substr(line.find(',') + 1);
-        checkDate(file, date);
-        checkExchangeRate(file, e_rate);
-        _data_csv.insert(std::make_pair(date, std::atof(e_rate.c_str())));
+            std::string date = line.substr(0, line.find(','));
+            std::string e_rate = line.substr(line.find(',') + 1);
+            checkDateCsv(file, date);
+            checkExchangeRate(file, e_rate);
+            _data_csv.insert(std::make_pair(date, std::atof(e_rate.c_str())));
     }
     if (_data_csv.size() == 0)
         raiseRuntimeException(NO_DATA, file);
@@ -116,14 +153,17 @@ void   BitcoinExchange::parseInputFile(std::fstream &input)
         raiseRuntimeException(UNVAILD_INPUT_HEADER, input);
     while (std::getline(input, line))
     {
-        parsedData = true;
-        if (line.find(" | ") == std::string::npos)
-            raiseRuntimeException(UNVAILD_INPUT_FORMAT, input);
-        std::string date = line.substr(0, line.find(" | "));
-        std::string value = line.substr(line.find(" | ") + 3);
-        checkDate(input, date);
-        double i_value = checkValue(input, value);
-        generateBitcoinValue(date, i_value);
+            parsedData = true;
+            if (line.find(" | ") == std::string::npos)
+            {
+                raiseRuntimeExceptionOut(UNVAILD_INPUT_FORMAT);
+                continue;
+            }
+            std::string date = line.substr(0, line.find(" | "));
+            std::string value = line.substr(line.find(" | ") + 3);
+            double i_value = checkValue(value);
+            if (i_value != -1 && checkDateInput(date))
+                generateBitcoinValue(date, i_value);
     }
     if (line.empty() && parsedData == 0)
         raiseRuntimeException(NO_DATA, input);

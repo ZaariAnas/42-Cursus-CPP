@@ -33,5 +33,6 @@ int main(int ac, char **av)
         file.close();
         input.close();
         std::cerr << e.what() << '\n';
+        std::cout << "main catch" << std::endl;
     }
 }
